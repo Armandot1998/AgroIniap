@@ -42,6 +42,7 @@ die();
 
          $asociacion = $_POST['asociacion'];
          $Easociacion = $_POST['Easociacion'];
+         $clave = md5($_POST['clave']);
          $usuario = $_SESSION['usuario'];
 
        $sql2="SELECT correo, ci FROM Agr_usuario WHERE ci = '$usuario'";
@@ -50,7 +51,6 @@ die();
 
        $correo = $fila['correo'];
        $cedula = $fila['ci'];
-       $clave = md5($cedula.'Iniap');
 
        $sql=" UPDATE Agr_usuario SET clave = '$clave', asociacion ='$asociacion', e_asociacion ='$Easociacion', id_estado = (select Id_Estado from Agr_Estado where nombre_corto = 'A'), 
         id_tipo_usuario = (select id_tipo_usuario from Agr_Tipo_Usuario where nombre = 'U') WHERE ci= '$usuario'";
@@ -81,6 +81,7 @@ die();
 
       $asociacion = $_POST['asociacion'];
       $Easociacion = null;
+      $clave = md5($_POST['clave']);
       $usuario = $_SESSION['usuario'];
          
        $sql2="SELECT correo, ci FROM Agr_usuario WHERE ci = '$usuario'";
@@ -89,7 +90,6 @@ die();
 
        $correo = $fila['correo'];
        $cedula = $fila['ci'];
-       $clave = md5($cedula.'Iniap');
 
        $sql=" UPDATE Agr_usuario SET clave = '$clave', asociacion ='$asociacion', e_asociacion ='$Easociacion', id_estado = (select Id_Estado from Agr_Estado where nombre_corto = 'A'), 
         id_tipo_usuario = (select id_tipo_usuario from Agr_Tipo_Usuario where nombre = 'U') WHERE ci='$usuario'";

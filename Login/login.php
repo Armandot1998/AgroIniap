@@ -21,7 +21,6 @@
             AgroIniap
           </span>
         <form class="form-inline my-2 my-lg-0 ml-auto">
-            <a href="../Registro/Cedula.php" class="btn btn-outline-white btn-sm my-2 my-sm-0 ml-3" type="submit">Registro</a>
             <a href="../index.html" class="btn btn-outline-white btn-sm my-2 my-sm-0 ml-3" type="submit">Inicio</a>
         </form>
     </nav>
@@ -50,7 +49,8 @@
 							Entrar
             </button>
           </form>
-          <div align="right"><a href="../RecuperarClv/RecuperarCl.php">Has olvidado tus credenciales?</a></div>
+          <div align="right"><a href="../Registro/cedula.php">Eres nuevo? Registrate</a></div>
+          <br> <br>
           <div class="modal-footer display-footer" id="respuesta"></div>
 				</div>
 				<div class="col-md-4">

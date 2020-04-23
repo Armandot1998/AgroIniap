@@ -1,4 +1,5 @@
 <?php
+session_start();
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -59,18 +60,20 @@ if ($digito==$ult_digito){//comparo los digitos final y ultimo
     include '../Conexion/conexion2.php';
     $conexion=conexion();
     
-    $sql="SELECT * FROM Agr_Usuario where ci ='$strCedula'";
+    $sql="SELECT ci FROM Agr_Usuario where ci ='$strCedula'";
+
     $result=pg_query($conexion,$sql);  
-    $fila=pg_fetch_array($result);
-    
-       $correo = $fila['correo'];
-    
-       $clave = substr(md5(microtime()), 1, 10);
-    
-       $sql=" UPDATE Agr_Usuario SET clave = '$clave', id_estado = (select Id_Estado from Agr_Estado where nombre_corto = 'R')  where correo = '$correo'";
-       $result=pg_query($conexion,$sql); 
-    
-    
+    $total = pg_num_rows($result);
+       if($total>0){
+
+
+        $sql="SELECT correo, ci FROM Agr_usuario WHERE ci = '$strCedula'";
+        $last=pg_query($conexion,$sql);
+        $fila=pg_fetch_array($last);
+ 
+        $correo = $fila['correo'];
+        $_SESSION['usuario'] = $strCedula;
+
     // Instantiation and passing `true` enables exceptions
     $mail = new PHPMailer(true);
     
@@ -95,7 +98,7 @@ if ($digito==$ult_digito){//comparo los digitos final y ultimo
         $mail->Body    = '<p>
         Estimad@: Usuari@ ,<br>
         Se ha solicitado reestablecer su clave, <br>
-        Ingrese a la plataforma AgroIniap con esta clave temporal<strong> '.$clave.' </strong> </p>';
+        <a href="http://localhost/AgroIniap/RecuperarClv/reset.php">Click en este enlace para cambiar tu clave</a>';
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
     
         $mail->send();
@@ -109,6 +112,17 @@ if ($digito==$ult_digito){//comparo los digitos final y ultimo
     } catch (Exception $e) {
         echo "Hubo un error al enviar el correo: {$mail->ErrorInfo}";
     }
+
+
+       }else{
+        echo '<div class="alert alert-danger" role="alert">
+        <strong>Error!</strong> usted no esta registrado!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>';
+       };
+
 }else{
   echo '<div class="alert alert-danger" role="alert">
   <strong>Cédula Incorrecta!</strong> revise e ingrese una cédula correcta por favor

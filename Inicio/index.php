@@ -27,7 +27,7 @@ die();
 </head>
 
 <body>
-  <nav class="navbar navbar-dark indigo">
+  <nav class="navbar fixed-top navbar-dark indigo">
     <span class="navbar-text white-text"> AgroIniap </span>
     <div class="btn-group">
     <button class="btn btn-outline-white btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
@@ -58,7 +58,7 @@ die();
 </ul>
 		</div>
 		<div class="col-md-10">
-      <br>
+      <br><br><br>
     <div class="jumbotron">
 				<h2>
 					Hello, world!

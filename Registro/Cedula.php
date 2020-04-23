@@ -16,7 +16,14 @@
   <link rel="stylesheet" href="../Libs/MDBootstrap/css/style.css">
 </head>
 <body>
-<?php include '../Componentes/navbar.php'; ?>
+<nav class="navbar navbar-dark indigo">
+        <span class="navbar-text white-text">
+        Bienvenido al registro de usuarios
+          </span>
+        <form class="form-inline my-2 my-lg-0 ml-auto">
+            <a href="../index.html" class="btn btn-outline-white btn-sm my-2 my-sm-0 ml-3" type="submit">Inicio</a>
+        </form>
+    </nav>
 <br>
 <div class="container-fluid">
 	<div class="row">

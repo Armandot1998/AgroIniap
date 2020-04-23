@@ -29,10 +29,30 @@ die();
 include '../../Conexion/conexion2.php';
 $conexion=conexion();
 
-?>
+$usuario = $_SESSION['usuario'];
 
+       $sql2="SELECT agr_usuario.nombres, agr_usuario.apellidos, agr_usuario.correo, agr_usuario.ci,
+       agr_usuario.direccion, agr_usuario.e_asociacion, agr_provincia.nombre as provincia, agr_canton.nombre as canton,
+       agr_parroquia.nombre as parroquia
+       FROM Agr_usuario 
+       INNER JOIN agr_provincia ON agr_usuario.id_provincia = agr_provincia.id_provincia
+       INNER JOIN agr_canton ON agr_usuario.id_canton = agr_canton.id_canton
+       INNER JOIN agr_parroquia ON agr_usuario.id_parroquia = agr_parroquia.id_parroquia WHERE ci = '$usuario'";
+       $last=pg_query($conexion,$sql2);
+       $fila=pg_fetch_array($last);
+
+       $nombres = $fila['nombres'];
+       $apellidos = $fila['apellidos'];
+       $email = $fila['correo'];
+       $ci = $fila['ci'];
+       $provincia = $fila['provincia'];
+       $canton = $fila['canton'];
+       $parroquia = $fila['parroquia'];
+       $direccion = $fila['direccion'];
+       $asociacion = $fila['e_asociacion'];
+?>
 <body>
-  <nav class="navbar navbar-dark indigo">
+  <nav class="navbar fixed-top navbar-dark indigo">
     <span class="navbar-text white-text"> AgroIniap </span>
     <div class="btn-group">
     <button class="btn btn-outline-white btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
@@ -40,57 +60,102 @@ $conexion=conexion();
     Opciones
   </button>
       <div class="dropdown-menu">
+      <a class="dropdown-item" href="../index.php">Inicio</a>
         <a class="dropdown-item" href="#">Notificaciones</a>
         <a class="dropdown-item" href="#">Acerca de ..</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="../../Procesos/cerrar.php">Cerrar Sesion</a>
       </div>
     </div>
-  </nav><br>
+  </nav>
   <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-2">
 		</div>
 		<div class="col-md-8">
+      <br><br><br>
 			<div class="jumbotron">
-            <h2>
+        <h2>
 					Datos del Usuario
-				</h2><br>
-<form>
-  <div class="form-row">
-    <div class="col">
-      <div class="md-form mt-0">
-        <input type="text" class="form-control" readonly>
-      </div>
+        </h2>
+    <div class="row">
+		 <div class="col-md-6">
+
+    <div class="md-form">
+        <input type="text" id="materialLoginFormPassword" value="<?php echo $nombres; ?>" class="form-control" readonly>
+        <label for="materialLoginFormPassword">Nombres</label>
+    </div><br>
+
+    <div class="md-form">
+        <input type="text" id="materialLoginFormPassword" value="<?php echo $ci; ?>" class="form-control" readonly>
+        <label for="materialLoginFormPassword">Cédula de Identidad</label>
+      </div><br>
+      <h2>
+					Dirección
+      </h2>
     </div>
-    <div class="col">
-      <div class="md-form mt-0">
-        <input type="text" class="form-control">
+		<div class="col-md-6">
+
+    <div class="md-form">
+        <input type="text" id="materialLoginFormPassword" value="<?php echo $apellidos; ?>" class="form-control" readonly>
+        <label for="materialLoginFormPassword">Apellidos</label>
+    </div><br>
+
+      <div class="md-form">
+        <input type="text" id="materialLoginFormPassword" value="<?php echo $email; ?>" class="form-control" readonly>
+        <label for="materialLoginFormPassword">Email</label>
       </div>
-    </div>
-  </div><br>
-  <div class="form-row">
-    <div class="col">
-      <div class="md-form mt-0">
-        <input type="text" class="form-control">
+		 </div>
+	</div>
+<div class="row">
+		<div class="col-md-4">
+    <div class="md-form">
+        <input type="text" id="materialLoginFormPassword" value="<?php echo $provincia; ?>" class="form-control" readonly>
+        <label for="materialLoginFormPassword">Provincia</label>
       </div>
-    </div>
-    <div class="col">
-      <div class="md-form mt-0">
-        <input type="text" class="form-control" placeholder="Last name">
+		</div>
+		<div class="col-md-4">
+
+    <div class="md-form">
+        <input type="text" id="materialLoginFormPassword" value="<?php echo $canton; ?>" class="form-control" readonly>
+        <label for="materialLoginFormPassword">Canton</label>
+      </div>
+
+		</div>
+		<div class="col-md-4">
+
+    <div class="md-form">
+        <input type="text" id="materialLoginFormPassword" value="<?php echo $parroquia; ?>" class="form-control" readonly>
+        <label for="materialLoginFormPassword">Parroquia</label>
       </div>
     </div>
   </div>
-
-</form>
-				
-				<p>
-					This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
-				</p>
-				<p>
-					<a class="btn btn-primary btn-large" href="#">Learn more</a>
-				</p>
-			</div>
+  <div class="row">
+		<div class="col-md-8">
+    <div class="md-form">
+  <textarea id="form7" class="md-textarea form-control" rows="1" readonly><?php echo $direccion; ?></textarea>
+  <label for="form7">Direción Domiciliaria</label>
+</div>
+<br>
+      <h2>
+					Asociación
+      </h2>
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
+  <div class="row">
+		<div class="col-md-6">
+    <div class="md-form">
+        <input type="text" id="materialLoginFormPassword" value="<?php echo $asociacion; ?>" class="form-control" readonly>
+        <label for="materialLoginFormPassword">Asociacion</label>
+      </div>
+		</div>
+		<div class="col-md-6" align="center">
+    <button type="button" class="btn btn-outline-primary waves-effect">Modificar Perfil</button>
+		</div>
+	</div>
+  </div>
 		</div>
 		<div class="col-md-2">
 		</div>
