@@ -19,13 +19,12 @@ $conexion=conexion();
 
 $usuario = $_SESSION['usuario'];
 
-       $sql2="SELECT correo, clave, nombres, apellidos FROM Agr_usuario WHERE ci = '$usuario'";
+       $sql2="SELECT correo, nombres, apellidos FROM Agr_usuario WHERE ci = '$usuario'";
        $last=pg_query($conexion,$sql2);
        $fila=pg_fetch_array($last);
 
        $nombres = $fila['nombres'];
        $apellidos = $fila['apellidos'];
-       $clave = $fila['clave'];
        $correo = $fila['correo'];
        
 // Instantiation and passing `true` enables exceptions
@@ -65,9 +64,7 @@ try {
                                     <hr>
                                     <p class="card-text">Estimad@ :<strong> '.$apellidos.' '.$nombres.' </strong>,<br>
                                         Bienvenido a la plataforma AgroIniap,<br>
-                                        sus credenciales de acceso son:<br><br>
-                                        <strong>Usuario:</strong> '.$usuario.',<br><br>
-                                        <strong>Clave:</strong> '.$usuario.'Iniap<br><br>
+                                        <a href="http://localhost/AgroIniap/Procesos/verificar.php">Click en este enlace para confirmar tu cuenta</a>
                                       Saludos cordiales.
                                     </p>
                                 </div>';
@@ -76,6 +73,8 @@ try {
 
     $mail->send();
     session_destroy();
+    session_start();
+    $_SESSION['usuario'] = $usuario;
     echo '<script> location.href="../Index.html"; </script>';
 } catch (Exception $e) {
     echo "Hubo un error al enviar el correo: {$mail->ErrorInfo}";
