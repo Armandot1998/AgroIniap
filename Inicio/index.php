@@ -108,12 +108,10 @@ $usuario = $_SESSION['usuario'];
 <br><br><br>
     <ul class="list-group">
   <li class="list-group-item active">Menú de Opciones</li>
-  <li class="list-group-item">Dapibus ac facilisis in</li>
-  <li class="list-group-item">Morbi leo risus</li>
-  <li class="list-group-item">Porta ac consectetur ac</li>
-  <li class="list-group-item">Vestibulum at eros</li>
-  <li class="list-group-item">Porta ac consectetur ac</li>
-  <li class="list-group-item">Vestibulum at eros</li>
+  <li class="list-group-item"><a class="btn btn-primary" href="./mapas/index.html"><i class="fas fa-map mr-1"></i> Registrar Explotación</a></li>
+  <li class="list-group-item"><a class="btn btn-primary"><i class="fas fa-bookmark mr-1"></i> Tus Explotaciones</a></li>
+  <li class="list-group-item"><a class="btn btn-primary"><i class="fas fa-newspaper mr-1"></i>Noticias</a></li>
+  <li class="list-group-item"><a class="btn btn-primary "><i class="fas fa-magic mr-1"></i> Registrar Explotación</a></li>
 </ul>
 		</div>
 		<div class="col-md-10">
