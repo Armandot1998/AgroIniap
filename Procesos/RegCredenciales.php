@@ -95,28 +95,27 @@ die();
         id_tipo_usuario = (select id_tipo_usuario from Agr_Tipo_Usuario where nombre = 'U') WHERE ci='$usuario'";
        $result=pg_query($conexion,$sql);
 
-        echo '
-        <div class="jumbotron">
-        <form action="EnviarMail.php" method="POST">
-         <h4>
-            Exelente, has completado tu registro!
-         </h4>
-         <p><h5>
-         <div class="form-group">
-                <strong> Ya casi estamos listos para empesar!!</strong><br>
-                 Se ha enviado un mail de confirmacion a tu direccion de corréo electronico <br> 
-                 <strong>
-                 <input type="text" class="form-control" name="correo" value="'.$correo.'" readonly/>
-                 </strong><br>
-                 <strong>Por favor confirma tu registro!!</strong>
-            <h5>
-         </p>
-         </div>
-         <button type="submit" class="btn btn-primary">
-                  Aceptar
-               </button>
-         </form>
-      </div>';
+       echo '
+       <div class="jumbotron">
+        <h4>
+           Exelente, has completado tu registro!
+        </h4>
+        <p><h5>
+        <div class="form-group">
+               <strong> Ya casi estamos listos para empesar!!</strong><br>
+                Se ha enviado un mail de confirmacion a tu direccion de corréo electronico <br><br>
+                
+
+                <strong>'.$correo.'</strong><br><br>
+                
+                Por favor confirma tu registro!!
+           <h5>
+        </p>
+        </div>
+        <a href="EnviarMail.php" type="button" class="btn btn-primary">
+                 Aceptar
+              </a>
+     </div>';
          };
          
              ?>

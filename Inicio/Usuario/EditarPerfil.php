@@ -76,18 +76,18 @@ $usuario = $_SESSION['usuario'];
       <br><br><br>
 			<div class="jumbotron">
         <h2>
-					Datos del Usuario
+					Modificar Datos del Usuario
         </h2>
     <div class="row">
 		 <div class="col-md-6">
 
     <div class="md-form">
-        <input type="text" id="materialLoginFormPassword" value="<?php echo $nombres; ?>" class="form-control" readonly>
+        <input type="text" id="materialLoginFormPassword" value="<?php echo $nombres; ?>" class="form-control" >
         <label for="materialLoginFormPassword">Nombres</label>
     </div><br>
 
     <div class="md-form">
-        <input type="text" id="materialLoginFormPassword" value="<?php echo $ci; ?>" class="form-control" readonly>
+        <input type="text" id="materialLoginFormPassword" value="<?php echo $ci; ?>" class="form-control" >
         <label for="materialLoginFormPassword">Cédula de Identidad</label>
       </div><br>
       <h2>
@@ -97,12 +97,12 @@ $usuario = $_SESSION['usuario'];
 		<div class="col-md-6">
 
     <div class="md-form">
-        <input type="text" id="materialLoginFormPassword" value="<?php echo $apellidos; ?>" class="form-control" readonly>
+        <input type="text" id="materialLoginFormPassword" value="<?php echo $apellidos; ?>" class="form-control" >
         <label for="materialLoginFormPassword">Apellidos</label>
     </div><br>
 
       <div class="md-form">
-        <input type="text" id="materialLoginFormPassword" value="<?php echo $email; ?>" class="form-control" readonly>
+        <input type="text" id="materialLoginFormPassword" value="<?php echo $email; ?>" class="form-control" >
         <label for="materialLoginFormPassword">Email</label>
       </div>
 		 </div>
@@ -110,14 +110,14 @@ $usuario = $_SESSION['usuario'];
 <div class="row">
 		<div class="col-md-4">
     <div class="md-form">
-        <input type="text" id="materialLoginFormPassword" value="<?php echo $provincia; ?>" class="form-control" readonly>
+        <input type="text" id="materialLoginFormPassword" value="<?php echo $provincia; ?>" class="form-control" >
         <label for="materialLoginFormPassword">Provincia</label>
       </div>
 		</div>
 		<div class="col-md-4">
 
     <div class="md-form">
-        <input type="text" id="materialLoginFormPassword" value="<?php echo $canton; ?>" class="form-control" readonly>
+        <input type="text" id="materialLoginFormPassword" value="<?php echo $canton; ?>" class="form-control" >
         <label for="materialLoginFormPassword">Canton</label>
       </div>
 
@@ -125,7 +125,7 @@ $usuario = $_SESSION['usuario'];
 		<div class="col-md-4">
 
     <div class="md-form">
-        <input type="text" id="materialLoginFormPassword" value="<?php echo $parroquia; ?>" class="form-control" readonly>
+        <input type="text" id="materialLoginFormPassword" value="<?php echo $parroquia; ?>" class="form-control" >
         <label for="materialLoginFormPassword">Parroquia</label>
       </div>
     </div>
@@ -133,7 +133,7 @@ $usuario = $_SESSION['usuario'];
   <div class="row">
 		<div class="col-md-8">
     <div class="md-form">
-  <textarea id="form7" class="md-textarea form-control" rows="1" readonly><?php echo $direccion; ?></textarea>
+  <textarea id="form7" class="md-textarea form-control" rows="1" ><?php echo $direccion; ?></textarea>
   <label for="form7">Direción Domiciliaria</label>
 </div>
 <br>
@@ -147,12 +147,12 @@ $usuario = $_SESSION['usuario'];
   <div class="row">
 		<div class="col-md-6">
     <div class="md-form">
-        <input type="text" id="materialLoginFormPassword" value="<?php echo $asociacion; ?>" class="form-control" readonly>
+        <input type="text" id="materialLoginFormPassword" value="<?php echo $asociacion; ?>" class="form-control" >
         <label for="materialLoginFormPassword">Asociacion</label>
       </div>
 		</div>
 		<div class="col-md-6" align="center">
-    <a type="button" href="EditarPerfil.php" class="btn btn-outline-primary waves-effect">Modificar Perfil</a>
+    <button type="button" class="btn btn-outline-primary waves-effect">Modificar Perfil</button>
 		</div>
 	</div>
   </div>

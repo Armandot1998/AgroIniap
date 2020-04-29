@@ -50,7 +50,7 @@ $usuario = $_SESSION['usuario'];
   Opciones
 </button>
     <div class="dropdown-menu">
-    <a class="dropdown-item" href="../Procesos/cerrar.php">Cerrar Sesion</a>
+    
     </div>
   </div>
 </nav><div class="container-fluid">

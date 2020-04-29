@@ -58,9 +58,4 @@ $result=pg_query($conexion,$sql);
 		</div>
 	</div>
 </div>
-
-
-
-
-
 <?php };?>
