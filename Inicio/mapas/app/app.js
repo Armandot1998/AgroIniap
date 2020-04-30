@@ -8,31 +8,30 @@ $(document).ready(function(){
 function _attachTopNavMenu () {
   var adjacentTopNavMenuDOM = "" +
     "<nav class='navbar navbar-expand-md navbar-dark fixed-top indigo'>" +
-      "<a class='navbar-brand' href='./'>Registro de Explotacion</a>" +
+      "<a class='navbar-brand' href='../index.php'>AgroIniap</a>" +
       "<button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarCollapse' aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation'>" +
         "<span class='navbar-toggler-icon'></span>" +
       "</button>" +
       "<div class='collapse navbar-collapse' id='navbarCollapse'>" +
         "<ul class='navbar-nav mr-auto'>" +
           "<li class='nav-item'>" +
-            "<a id='home' class='nav-link flat' href='#'><i class='fa fa-home'></i>&nbsp;Home</a>" +
+            "<a id='home' class='nav-link flat' href='#'><i class='fa fa-home'></i>&nbsp;Inicio</a>" +
           "</li>" +
           "<li class='nav-item'>" +
-            "<a id='leaflet_crud_create' class='nav-link flat' href='#'><i class='fa fa-pencil'></i>&nbsp;Create</a>" +
+            "<a id='leaflet_crud_create' class='nav-link flat' href='#'><i class='fa fa-pencil'></i>&nbsp;Nuevo</a>" +
           "</li>" +
           "<li class='nav-item'>" +
-            "<a id='leaflet_crud_read' class='nav-link flat' href='#'><i class='fa fa-map'></i>&nbsp;Read</a>" +
+            "<a id='leaflet_crud_read' class='nav-link flat' href='#'><i class='fa fa-map'></i>&nbsp;Explotaciones</a>" +
           "</li>" +
           "<li class='nav-item dropdown'>" +
-            "<a class='nav-link dropdown-toggle' href='#' id='navbarDropdownUpdate' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fa fa-location-arrow'></i>&nbsp;Update [Edit]</a>" +
+            "<a class='nav-link dropdown-toggle' href='#' id='navbarDropdownUpdate' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fa fa-location-arrow'></i>&nbsp;Modificar</a>" +
             "<div class='dropdown-menu' aria-labelledby='navbarDropdownUpdate'>" +
-              "<a id='leaflet_crud_update_point' class='dropdown-item' href='#'><i class='fa fa-pencil-square-o'></i>&nbsp;Point</a>" +
-              "<a id='leaflet_crud_update_linestring' class='dropdown-item' href='#'><i class='fa fa-pencil-square-o'></i>&nbsp;Line</a>" +
-              "<a id='leaflet_crud_update_polygon' class='dropdown-item' href='#'><i class='fa fa-pencil-square-o'></i>&nbsp;Polygon</a>" +
+              "<a id='leaflet_crud_update_point' class='dropdown-item' href='#'><i class='fa fa-pencil-square-o'></i>&nbsp;Punto</a>" +
+              "<a id='leaflet_crud_update_polygon' class='dropdown-item' href='#'><i class='fa fa-pencil-square-o'></i>&nbsp;Explotación</a>" +
             "</div>" +
           "</li>" +
           "<li class='nav-item'>" +
-            "<a id='leaflet_crud_delete' class='nav-link flat' href='#'><i class='fa fa-trash'></i>&nbsp;Delete</a>" +
+            "<a id='leaflet_crud_delete' class='nav-link flat' href='#'><i class='fa fa-trash'></i>&nbsp;Eliminar</a>" +
           "</li>" +
         "</ul>" +
       "</div>" +
@@ -97,24 +96,24 @@ function _buildDigitiseModalBox (targetmodal,context,geometry) {
       "<table id='feature_data' class='table table-condensed table-bordered table-striped'>" +
         "<thead>" +
           "<tr>" +
-            "<th colspan='2' class='text-center'>Feature Data</th>" +
+            "<th colspan='2' class='text-center'>Datos del Registro</th>" +
           "</tr>" +
         "</thead>" +
         "<tbody>" +
           "<tr>" +
-            "<td class=''>Notes</td>" +
+            "<td class=''>Contenido</td>" +
             "<td class='text-center'><input type='text' id='notes' name='notes' class='form-control' value=''/></td>" +
           "</tr>" +
           "<tr>" +
-            "<td class=''>Geometry<br/>(in WKT)</td>" +
+            "<td class=''>Ubicación<br/>(en WKT)</td>" +
             "<td class='text-center'><textarea rows='5' style='width:100%;' readonly='true'>"+geometry+"</textarea></td>" +
           "</tr>" +
         "</tbody>" +
       "</table>" +
     "";
   var modalfooter = "" +
-    "<button type='button' id='canceldigitize' class='btn btn-default' data-dismiss='modal'><i class='fa fa-power-off'></i>&nbsp;Cancel</button>" +
-    "<button type='button' id='savegeometrydata' class='btn btn-primary'><i class='fa fa-floppy-o'></i>&nbsp;Save</button>" +
+    "<button type='button' id='canceldigitize' class='btn btn-default' data-dismiss='modal'><i class='fa fa-power-off'></i>&nbsp;Cancelar</button>" +
+    "<button type='button' id='savegeometrydata' class='btn btn-primary'><i class='fa fa-floppy-o'></i>&nbsp;Guardar</button>" +
     "";
   $("#form_modal_body").empty();
   $("#form_modal_footer").empty().html(modalfooter);
