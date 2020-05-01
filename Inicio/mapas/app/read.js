@@ -120,12 +120,12 @@ function _displayMapRead (divtarget) {
 								"<table id='feature_data' class='table table-condensed table-bordered table-striped'>" +
 									"<thead>" +
 										"<tr>" +
-											"<th colspan='2' class='text-center'>Feature Data</th>" +
+											"<th colspan='2' class='text-center'>Datos del Registro</th>" +
 										"</tr>" +
 									"</thead>" +
 									"<tbody>" +
 										"<tr>" +
-											"<td class=''>Notes</td>" +
+											"<td class=''>Contenido</td>" +
 											"<td class=''><strong>"+feature.properties.notes+"</strong></td>" +
 										"</tr>" +
 									"</tbody>" +
