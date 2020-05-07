@@ -23,7 +23,6 @@ die();
   <link rel="stylesheet" href="../Libs/MDBootstrap/css/mdb.min.css">
   <link rel="stylesheet" href="../Libs/MDBootstrap/css/style.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"><!-- Font Awesome Icons  links -->
-
 </head>
 <body>
   <?php
@@ -42,46 +41,34 @@ $usuario = $_SESSION['usuario'];
 
        if($estado == 'R'){
          ?>
-<nav class="navbar fixed-top navbar-dark indigo">
-  <span class="navbar-text white-text"> AgroIniap </span>
-  <div class="btn-group">
-  <button class="btn btn-outline-white btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
-  aria-haspopup="true" aria-expanded="false">
-  Opciones
-</button>
-    <div class="dropdown-menu">
-    
-    </div>
-  </div>
-</nav><div class="container-fluid">
+<div class="container-fluid">
 	<div class="row">
-		<div class="col-md-2">
-<br><br><br>
-    <ul class="list-group">
-  <li class="list-group-item active">Cras justo odio</li>
-  <li class="list-group-item">Dapibus ac facilisis in</li>
-  <li class="list-group-item">Morbi leo risus</li>
-  <li class="list-group-item">Porta ac consectetur ac</li>
-  <li class="list-group-item">Vestibulum at eros</li>
-  <li class="list-group-item">Porta ac consectetur ac</li>
-  <li class="list-group-item">Vestibulum at eros</li>
-</ul>
+		<div class="col-md-4">
 		</div>
-		<div class="col-md-10">
-      <br><br><br>
+		<div class="col-md-4">
+      <br><br>
     <div class="jumbotron">
-				<h2>
-					Upss, Por favor verifica tu corréo electrónico!
-				</h2><br>
-				<p>
-				Es de suma importacia que la cuenta de email con la que te has registrado sea verificada.
-				</p>
-				<p>
-					<a class="btn btn-primary btn-large" href="#">Learn more</a>
-				</p>
-			</div>
+        <h4>
+           Ups, Hay un Problema!
+        </h4>
+        <p><h5>
+        <div class="form-group">
+               <strong> Por favor!!</strong><br>
+                Se ha enviado un mail de confirmacion a tu direccion de corréo electronico <br><br>              
+                
+                Por favor confirma tu registro!!
+           <h5>
+        </p>
+        </div>
+        <a href="../Procesos/cerrar.php" type="button" class="btn btn-primary">
+                 Aceptar
+              </a>
+     </div>
+		</div>
+		<div class="col-md-4">
 		</div>
 	</div>
+</div>
 <?php
 }else{
          if($estado == 'A'){?>

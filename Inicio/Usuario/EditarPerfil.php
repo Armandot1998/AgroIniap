@@ -17,6 +17,8 @@ die();
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>AgroIniap</title>
   <link rel="icon" href="../../Libs/Imagenes/iniap.png" type="image/x-icon"> <!-- Icono de la pagina web -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
   <link rel="stylesheet" href="../../Libs/MDBootstrap/css/bootstrap.min.css">
@@ -32,7 +34,9 @@ $conexion=conexion();
 $usuario = $_SESSION['usuario'];
 
        $sql2="SELECT agr_usuario.nombres, agr_usuario.apellidos, agr_usuario.correo, agr_usuario.ci,
-       agr_usuario.direccion, agr_usuario.e_asociacion, agr_provincia.nombre as provincia, agr_canton.nombre as canton,
+       agr_usuario.direccion, agr_usuario.e_asociacion, agr_provincia.Id_provincia as id_provincia,
+	   agr_provincia.nombre as provincia, agr_canton.id_canton as id_canton,
+	   agr_canton.nombre as canton, agr_parroquia.Id_parroquia as id_parroquia,
        agr_parroquia.nombre as parroquia
        FROM Agr_usuario 
        INNER JOIN agr_provincia ON agr_usuario.id_provincia = agr_provincia.id_provincia
@@ -45,8 +49,11 @@ $usuario = $_SESSION['usuario'];
        $apellidos = $fila['apellidos'];
        $email = $fila['correo'];
        $ci = $fila['ci'];
+       $id_provincia = $fila['id_provincia'];
        $provincia = $fila['provincia'];
+       $id_canton = $fila['id_canton'];
        $canton = $fila['canton'];
+       $id_parroquia = $fila['id_parroquia'];
        $parroquia = $fila['parroquia'];
        $direccion = $fila['direccion'];
        $asociacion = $fila['e_asociacion'];
@@ -110,23 +117,32 @@ $usuario = $_SESSION['usuario'];
 <div class="row">
 		<div class="col-md-4">
     <div class="md-form">
-        <input type="text" id="materialLoginFormPassword" value="<?php echo $provincia; ?>" class="form-control" >
-        <label for="materialLoginFormPassword">Provincia</label>
+                            <select id="provincia" >
+                                <option value="<?php echo $id_provincia; ?>"><?php echo $provincia; ?></option>
+                            <?php 
+                             $sql="SELECT Id_Provincia,nombre FROM Agr_Provincia ORDER BY nombre";
+                             $result=pg_query($conexion,$sql);
+                                while($fila=pg_fetch_array($result)){
+                                    echo '
+                                    <option value="'.$fila['id_provincia'].'">'.$fila['nombre'].'</option>
+                                    ';}?>
+                            </select>
       </div>
+		</div>
+		<div class="col-md-4">
+    <div class="md-form">
+                            <select id="canton" >
+                            <option value="<?php echo $id_canton; ?>"><?php echo $canton; ?></option>
+                            </select>
+      </div>
+
 		</div>
 		<div class="col-md-4">
 
     <div class="md-form">
-        <input type="text" id="materialLoginFormPassword" value="<?php echo $canton; ?>" class="form-control" >
-        <label for="materialLoginFormPassword">Canton</label>
-      </div>
-
-		</div>
-		<div class="col-md-4">
-
-    <div class="md-form">
-        <input type="text" id="materialLoginFormPassword" value="<?php echo $parroquia; ?>" class="form-control" >
-        <label for="materialLoginFormPassword">Parroquia</label>
+    <select id="parroquia" >
+    <option value="<?php echo $id_parroquia; ?>"><?php echo $parroquia; ?></option>
+    </select>
       </div>
     </div>
   </div>
@@ -161,6 +177,34 @@ $usuario = $_SESSION['usuario'];
 		</div>
 	</div>
 </div>
+<script>
+$(document).ready(function(){
+$("#provincia").change(function(){
+
+    $("#provincia option:selected").each(function(){
+        id_provincia = $(this).val();
+        $.post("./Procesos/getCanton.php", {id_provincia: id_provincia
+        }, function(data){
+            $("#canton").html(data);
+        });
+    });
+})
+});
+
+$(document).ready(function(){
+$("#canton").change(function(){
+
+    $("#canton option:selected").each(function(){
+        id_canton = $(this).val();
+        $.post("./Procesos/getParroquia.php", {id_canton: id_canton
+        }, function(data){
+            $("#parroquia").html(data);
+        });
+    });
+})
+});
+
+</script>
   <script type="text/javascript" src="../../Libs/MDBootstrap/js/jquery.min.js"></script>
   <script type="text/javascript" src="../../Libs/MDBootstrap/js/popper.min.js"></script>
   <script type="text/javascript" src="../../Libs/MDBootstrap/js/bootstrap.min.js"></script>
