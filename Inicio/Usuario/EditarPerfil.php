@@ -89,12 +89,12 @@ $usuario = $_SESSION['usuario'];
 		 <div class="col-md-6">
 
     <div class="md-form">
-        <input type="text" id="materialLoginFormPassword" value="<?php echo $nombres; ?>" class="form-control" >
+        <input type="text" id="nombres" value="<?php echo $nombres; ?>" class="form-control" >
         <label for="materialLoginFormPassword">Nombres</label>
     </div><br>
 
     <div class="md-form">
-        <input type="text" id="materialLoginFormPassword" value="<?php echo $ci; ?>" class="form-control" >
+        <input type="text"  value="<?php echo $ci; ?>" class="form-control" readonly >
         <label for="materialLoginFormPassword">Cédula de Identidad</label>
       </div><br>
       <h2>
@@ -104,12 +104,12 @@ $usuario = $_SESSION['usuario'];
 		<div class="col-md-6">
 
     <div class="md-form">
-        <input type="text" id="materialLoginFormPassword" value="<?php echo $apellidos; ?>" class="form-control" >
+        <input type="text" id="apellidos" value="<?php echo $apellidos; ?>" class="form-control" >
         <label for="materialLoginFormPassword">Apellidos</label>
     </div><br>
 
       <div class="md-form">
-        <input type="text" id="materialLoginFormPassword" value="<?php echo $email; ?>" class="form-control" >
+        <input type="text" id="email" value="<?php echo $email; ?>" class="form-control" >
         <label for="materialLoginFormPassword">Email</label>
       </div>
 		 </div>
@@ -149,7 +149,7 @@ $usuario = $_SESSION['usuario'];
   <div class="row">
 		<div class="col-md-8">
     <div class="md-form">
-  <textarea id="form7" class="md-textarea form-control" rows="1" ><?php echo $direccion; ?></textarea>
+  <textarea id="Ddireccion" class="md-textarea form-control" rows="1" ><?php echo $direccion; ?></textarea>
   <label for="form7">Direción Domiciliaria</label>
 </div>
 <br>
@@ -163,12 +163,13 @@ $usuario = $_SESSION['usuario'];
   <div class="row">
 		<div class="col-md-6">
     <div class="md-form">
-        <input type="text" id="materialLoginFormPassword" value="<?php echo $asociacion; ?>" class="form-control" >
+        <input type="text" id="asociacion" value="<?php echo $asociacion; ?>" class="form-control" >
         <label for="materialLoginFormPassword">Asociacion</label>
       </div>
 		</div>
 		<div class="col-md-6" align="center">
-    <button type="button" class="btn btn-outline-primary waves-effect">Modificar Perfil</button>
+    <button type="button" id="enviar" class="btn btn-outline-primary waves-effect">Actualizar</button>
+    <div id="respuesta"></div>
 		</div>
 	</div>
   </div>
@@ -203,6 +204,39 @@ $("#canton").change(function(){
     });
 })
 });
+
+
+$('#enviar').click(function () {
+
+var Nombres = document.getElementById('nombres').value;
+var Apellidos = document.getElementById('apellidos').value;
+var Correo = document.getElementById('email').value;
+var Provincia = document.getElementById('provincia').value;
+var Canton = document.getElementById('canton').value;
+var Parroquia = document.getElementById('parroquia').value;
+var Ddireccion = document.getElementById('Ddireccion').value;
+var Asociacion = document.getElementById('asociacion').value;
+
+var ruta = "nombres=" + Nombres + "&apellidos="+ Apellidos +
+ "&correo="+Correo + "&provincia="+Provincia + "&canton="+Canton +
+ "&parroquia="+Parroquia + "&Ddireccion="+Ddireccion + "&asociacion="+Asociacion;
+
+$.ajax({
+  url: './Procesos/EditarPerfil.php',
+  type: 'POST',
+  data: ruta,
+})
+  .done(function (res) {
+	$('#respuesta').html(res)
+  })
+  .fail(function () {
+	console.log("error");
+  })
+  .always(function () {
+	console.log("complete");
+  });
+});
+
 
 </script>
   <script type="text/javascript" src="../../Libs/MDBootstrap/js/jquery.min.js"></script>
